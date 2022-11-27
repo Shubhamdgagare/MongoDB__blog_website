@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+    <h1>Home</h1>
+    <p><%=homeContent%></p> 
+
+    <% blogItems.forEach(function (blog){ %>
+      <h3> <%= blog.title %> </h3>
+
+      <%# constrolling words to 100 %>
+      <% function ellipsify(str) { %>
+      <%  if (str.length > 100) { %>
+      <%    return (str.substring(0, 100) + " ... "); %>
+      <%    } else { %>
+      <%      return str; %>
+      <%    } %>
+      <%   } %>
+      <%  let text = ellipsify(blog.text); %>
+
+    <p> <%= text %> </p>
+
+    <!-- creating hyperlink to read specific blog -->
+    <a href="http://localhost:3000/posts/<%= blog.title%>">Read more</a>
+
+    <% }) %>
+
+<%- include('partials/footer') %>
